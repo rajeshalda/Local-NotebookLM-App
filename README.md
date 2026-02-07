@@ -10,7 +10,7 @@ Chat with your documents using AI — all running 100% locally. No cloud, no API
 
 ## Live Demo
 
-**[Try the Interactive Demo](https://YOUR_PROJECT.vercel.app/)**
+**[Try the Interactive Demo](https://local-notebooklm-app.vercel.app/)**
 
 Runs entirely in your browser with simulated responses — no backend required.
 
@@ -90,4 +90,26 @@ Deployed on **Vercel** as a static site. The `vercel.json` points to the `fronte
 
 ---
 
-Built by **Rajesh Alda**
+## Demo Product Notice
+
+> **This is a demo product.** The frontend with simulated responses is publicly available. If you're interested in the **full production codebase** (FastAPI backend, RAG pipeline, ChromaDB integration, Ollama inference), please reach out directly.
+
+---
+
+## Contact
+
+**Rajesh Alda**
+
+- GitHub: [github.com/rajeshalda](https://github.com/rajeshalda)
+- LinkedIn: [linkedin.com/in/rajeshalda](https://www.linkedin.com/in/rajeshalda/)
+- Project Repo: [Local-NotebookLM-App](https://github.com/rajeshalda/Local-NotebookLM-App)
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Built by **[Rajesh Alda](https://github.com/rajeshalda)**
