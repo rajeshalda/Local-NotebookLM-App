@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local NotebookLM - RAG Document Chat | Rajesh Alda</title>
+    <meta name="description" content="A privacy-first document chat system using RAG (Retrieval-Augmented Generation). Built by Rajesh Alda.">
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        <span class="demo-banner-icon">&#9432;</span>
+        This is an interactive demo. Responses are simulated &mdash; no backend required.
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Local NotebookLM</h1>
+            <p class="subtitle">Privacy-First Document Chat</p>
+            <div class="status-indicator">
+                <span id="status-dot" class="dot"></span>
+                <span id="status-text">Checking connection...</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Document Management</h3>
+
+                    <div class="folder-input-section">
+                        <label for="folderPath">Folder Path:</label>
+                        <input
+                            type="text"
+                            id="folderPath"
+                            placeholder="~/Documents/Research"
+                            class="input-field"
+                        >
+                        <button id="indexBtn" class="btn btn-primary">
+                            <span class="btn-icon">&#128193;</span>
+                            Index Folder
+                        </button>
+                    </div>
+
+                    <div class="indexed-docs-section">
+                        <h4>Indexed Documents</h4>
+                        <div id="documentsList" class="documents-list">
+                            <p class="placeholder-text">No documents indexed yet</p>
+                        </div>
+                        <button id="refreshDocsBtn" class="btn btn-secondary">
+                            <span class="btn-icon">&#128260;</span>
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>System Info</h3>
+                    <div id="systemInfo" class="system-info">
+                        <div class="info-item">
+                            <span class="label">LLM Model:</span>
+                            <span id="llmModel" class="value">Loading...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Embedding:</span>
+                            <span id="embeddingModel" class="value">Loading...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Documents:</span>
+                            <span id="docCount" class="value">0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">RAM Usage:</span>
+                            <span id="ramUsage" class="value">N/A</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chat Area -->
+            <main class="chat-container">
+                <div class="chat-header">
+                    <h2>Chat with Your Documents</h2>
+                    <button id="clearChatBtn" class="btn btn-text">Clear Chat</button>
+                </div>
+
+                <div id="chatMessages" class="chat-messages">
+                    <div class="welcome-message">
+                        <h3>Welcome to Local NotebookLM!</h3>
+                        <p>To get started:</p>
+                        <ol>
+                            <li>Enter a folder path containing your documents</li>
+                            <li>Click "Index Folder" to process your documents</li>
+                            <li>Ask questions about your documents in the chat</li>
+                        </ol>
+                        <p class="note">
+                            <strong>Note:</strong> All processing happens locally on your machine.
+                            Your documents never leave your computer!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <textarea
+                        id="chatInput"
+                        class="chat-input"
+                        placeholder="Ask a question about your documents..."
+                        rows="3"
+                    ></textarea>
+                    <button id="sendBtn" class="btn btn-send" disabled>
+                        <span class="btn-icon">&#128228;</span>
+                        Send
+                    </button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p id="loadingText">Processing...</p>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toast" class="toast"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-credit">
+                Built by <strong>Rajesh Alda</strong>
+            </div>
+
+            <div class="footer-links">
+                <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/YOUR_GITHUB_USERNAME/Local-NotebookLM-App" target="_blank" rel="noopener noreferrer">View Source on GitHub</a>
+            </div>
+
+            <div class="footer-tech">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">FastAPI</span>
+                <span class="tech-badge">ChromaDB</span>
+                <span class="tech-badge">Ollama</span>
+                <span class="tech-badge">RAG</span>
+                <span class="tech-badge">Vanilla JS</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./scripts/demo.js"></script>
+    <script src="./scripts/app.js"></script>
+</body>
+</html>
