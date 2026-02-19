@@ -26,7 +26,10 @@ const elements = {
     clearChatBtn: document.getElementById('clearChatBtn'),
     loadingOverlay: document.getElementById('loadingOverlay'),
     loadingText: document.getElementById('loadingText'),
-    toast: document.getElementById('toast')
+    toast: document.getElementById('toast'),
+    sidebarToggle: document.getElementById('sidebarToggle'),
+    sidebar: document.querySelector('.sidebar'),
+    sidebarBackdrop: document.getElementById('sidebarBackdrop')
 };
 
 // State
@@ -48,12 +51,31 @@ async function init() {
     setupEventListeners();
 }
 
+// Sidebar Toggle (mobile drawer)
+function toggleSidebar() {
+    elements.sidebar.classList.toggle('open');
+    elements.sidebarToggle.classList.toggle('active');
+    elements.sidebarBackdrop.classList.toggle('active');
+    document.body.style.overflow = elements.sidebar.classList.contains('open') ? 'hidden' : '';
+}
+
+function closeSidebar() {
+    elements.sidebar.classList.remove('open');
+    elements.sidebarToggle.classList.remove('active');
+    elements.sidebarBackdrop.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
 // Event Listeners
 function setupEventListeners() {
     elements.indexBtn.addEventListener('click', handleIndexDocuments);
     elements.refreshDocsBtn.addEventListener('click', loadDocuments);
     elements.sendBtn.addEventListener('click', handleSendMessage);
     elements.clearChatBtn.addEventListener('click', handleClearChat);
+
+    // Sidebar toggle for mobile
+    elements.sidebarToggle.addEventListener('click', toggleSidebar);
+    elements.sidebarBackdrop.addEventListener('click', closeSidebar);
 
     // Enable send button when there's input and documents are indexed
     elements.chatInput.addEventListener('input', () => {
@@ -189,6 +211,7 @@ async function handleIndexDocuments() {
             showToast(`Successfully indexed ${data.indexed_files} files in ${data.processing_time.toFixed(2)}s`, 'success');
             await loadDocuments();
             await checkHealth(); // Update doc count
+            closeSidebar(); // Close sidebar drawer on mobile after indexing
         } else {
             showToast(`Indexing completed with errors. ${data.failed_files} files failed.`, 'warning');
             if (data.errors && data.errors.length > 0) {

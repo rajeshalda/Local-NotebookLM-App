@@ -17,8 +17,17 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <h1>Local NotebookLM</h1>
-            <p class="subtitle">Privacy-First Document Chat</p>
+            <div class="header-top">
+                <div>
+                    <h1>Local NotebookLM</h1>
+                    <p class="subtitle">Privacy-First Document Chat</p>
+                </div>
+                <button id="sidebarToggle" class="sidebar-toggle" aria-label="Toggle sidebar">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
             <div class="status-indicator">
                 <span id="status-dot" class="dot"></span>
                 <span id="status-text">Checking connection...</span>
@@ -80,6 +89,7 @@
                     </div>
                 </div>
             </aside>
+            <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
 
             <!-- Chat Area -->
             <main class="chat-container">
